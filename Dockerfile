@@ -31,13 +31,13 @@ RUN \
    cd /opt/pip-8.1.2 && python setup.py build  && python setup.py install
 
 # 源码安装MySQLdb库
-RUN yum install mysql mysql-devel mysql-connector-odbc gcc python-devel -y
-ADD MySQLdb1-master.zip /opt/
-RUN \
-   cd /opt/ && unzip -o MySQLdb1-master.zip && cd MySQLdb1-master && \
-   sed -i "s/threadsafe = Ture/threadsafe = False/g" site.cfg && \
-   echo "mysql_config = /usr/bin/mysql_config" >> site.cfg && \
-   python setup.py build && python setup.py install && ln -s /usr/local/python2.7.11/bin/pip /usr/bin/
+#RUN yum install mysql mysql-devel mysql-connector-odbc gcc python-devel -y
+#ADD MySQLdb1-master.zip /opt/
+#RUN \
+#   cd /opt/ && unzip -o MySQLdb1-master.zip && cd MySQLdb1-master && \
+#   sed -i "s/threadsafe = Ture/threadsafe = False/g" site.cfg && \
+#   echo "mysql_config = /usr/bin/mysql_config" >> site.cfg && \
+#   python setup.py build && python setup.py install && ln -s /usr/local/python2.7.11/bin/pip /usr/bin/
 
 # 安装supervisor
 RUN pip install supervisor
