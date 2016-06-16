@@ -13,7 +13,7 @@ FROM index.alauda.cn/library/centos:6.6
 MAINTAINER Qingbo Song "qingbo.song@apicloud.com"
 
 # 依赖环境安装
-RUN yum install unzip zlib zlib-devel openssl-devel tar gcc gcc-c++ file -y 
+RUN yum install unzip zlib zlib-devel openssl-devel tar g++ gcc gcc-c++ file -y 
 
 # Install python2.7.11
 ADD Python-2.7.11.tgz /opt/
