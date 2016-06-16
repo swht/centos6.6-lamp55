@@ -40,7 +40,7 @@ RUN \
 #   python setup.py build && python setup.py install && ln -s /usr/local/python2.7.11/bin/pip /usr/bin/
 
 # 安装supervisor
-RUN pip install supervisor
+RUN ln -s /usr/local/python2.7.11/bin/pip /usr/bin/ && pip install supervisor
 
 #安装lamp环境
 RUN rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm && \
