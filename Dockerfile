@@ -7,7 +7,7 @@
 #Version:V 1.0                         			 #
 ##################################################
 
-FROM index.alauda.cn/library/centos:6.5
+FROM index.alauda.cn/library/centos:6.6
    
 # 镜像的作者  
 MAINTAINER Qingbo Song "qingbo.song@apicloud.com"
