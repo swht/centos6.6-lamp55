@@ -22,7 +22,7 @@ RUN rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm && \
    yum -y install php55w php55w-fpm  php55w-gd  php55w-mysql 
 
 # 配置supervisor
-RUN mkdir /etc/supervisor.d && echo_supervisord_conf > /etc/supervisord.conf && echo "files = /etc/supervisor.d/*.conf" >> /etc/supervisord.conf
+RUN mkdir /etc/supervisor.d && /usr/bin/echo_supervisord_conf > /etc/supervisord.conf && echo "files = /etc/supervisor.d/*.conf" >> /etc/supervisord.conf
 
 COPY run.sh start-apache2.sh start-mysqld.sh create_mysql_admin_user.sh /
 COPY supervisord-apache2.conf supervisord-mysqld.conf /etc/supervisor.d
