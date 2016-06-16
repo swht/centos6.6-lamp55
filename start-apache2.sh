@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /etc/init.d/httpd -D FOREGROUND
+exec /etc/init.d/httpd start -D FOREGROUND
