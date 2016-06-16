@@ -1,10 +1,10 @@
 ##################################################
-#Author:qingbo.song                    			 #
-#Date:2016.06.16                       			 #
-#E-mail:qingbo.song@apicloud.com       			 #
+#Author:qingbo.song                              #
+#Date:2016.06.16                                 #
+#E-mail:qingbo.song@apicloud.com                 #
 #Comment: APICloud模板Store centos6.5镜像模板文件#
 #python2.7.11 httpd-2.2.15 mysql55w php55w       #
-#Version:V 1.0                         			 #
+#Version:V 1.0                                   #
 ##################################################
 
 FROM index.alauda.cn/library/centos:6.6
@@ -13,13 +13,13 @@ FROM index.alauda.cn/library/centos:6.6
 MAINTAINER Qingbo Song "qingbo.song@apicloud.com"
 
 # 依赖环境安装
-RUN yum install unzip zlib zlib-devel openssl-devel tar gcc gcc-c++ -y 
+RUN yum install unzip zlib zlib-devel openssl-devel tar gcc gcc-c++ file -y 
 
 # Install python2.7.11
 ADD Python-2.7.11.tgz /opt/
 RUN \
    cd /opt/Python-2.7.11 && ./configure --prefix=/usr/local/python2.7.11 && make && make install && \
-   mv /usr/bin/python /usr/bin/python_old && ln -s /usr/local/python2.7.11/bin/* /usr/bin/ && \
+   mv /usr/bin/python /usr/bin/python_old && ln -s /usr/local/python2.7.11/bin/python /usr/bin/ && ln -s /usr/local/python2.7.11/bin/* /usr/local/bin && \
    sed -i "s/python/python2.6/g" /usr/bin/yum
 
 # 源码安装setuptools和pip
@@ -44,18 +44,18 @@ RUN pip install supervisor
 
 #安装lamp环境
 RUN rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm && \
-	yum -y install httpd && \
-	yum -y install libmysqlclient mysql55w mysql55w-server && \
-	yum -y install php55w php55w-fpm  php55w-gd  php55w-mysql 
+   yum -y install httpd && \
+   yum -y install libmysqlclient mysql55w mysql55w-server && \
+   yum -y install php55w php55w-fpm  php55w-gd  php55w-mysql 
 
 COPY run.sh start-apache2.sh start-mysqld.sh create_mysql_admin_user.sh /
 COPY supervisord-apache2.conf supervisord-mysqld.conf /etc/supervisor/conf.d/
 RUN chmod +x /run.sh /start-apache2.sh /start-mysqld.sh /create_mysql_admin_user.sh
 # clear code
 RUN \
-	yum -y remove unzip tar && \
-	yum -y remove gcc cloog-ppl cpp glibc-devel glibc-headers kernel-headers libgomp ppl && \
-	yum -y remove libstdc++-devel gcc-c++ && \ 
-	rm -fr /opt/*
+   yum -y remove unzip tar && \
+   yum -y remove gcc cloog-ppl cpp glibc-devel glibc-headers kernel-headers libgomp ppl && \
+   yum -y remove libstdc++-devel gcc-c++ && \ 
+   rm -fr /opt/*
 
 CMD ["/bin/bash"]
