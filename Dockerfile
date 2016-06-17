@@ -29,5 +29,5 @@ COPY run.sh start-apache2.sh start-mysqld.sh create_mysql_admin_user.sh /
 COPY supervisord-apache2.conf supervisord-mysqld.conf /etc/supervisor.d/
 RUN chmod +x /run.sh /start-apache2.sh /start-mysqld.sh /create_mysql_admin_user.sh
 
-RUN yum remove iptables -y && yum clean all
+RUN yum clean all
 CMD ["/run.sh"]
