@@ -22,11 +22,9 @@ RUN rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm && \
    yum -y install php55w php55w-fpm  php55w-gd  php55w-mysql 
 
 # 配置supervisor
-#RUN mkdir /etc/supervisor.d
 COPY supervisord.conf /etc/supervisord.conf
 
 COPY run.sh start-httpd.sh start-mysqld.sh start-php5.sh create_mysql_admin_user.sh /
-#COPY supervisord-httpd.conf supervisord-php5.conf supervisord-mysqld.conf /etc/supervisor.d/
 RUN chmod +x /run.sh /start-httpd.sh /start-php5.sh /start-mysqld.sh /create_mysql_admin_user.sh
 
 RUN yum clean all
