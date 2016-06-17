@@ -14,4 +14,5 @@ else
     echo "=> Using an existing volume of MySQL"
 fi
 
-exec supervisord -n --umask=022 --directory=/
+exec supervisord -n
+#--umask=022 --directory=/
