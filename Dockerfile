@@ -25,9 +25,9 @@ RUN rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm && \
 RUN mkdir /etc/supervisor.d 
 COPY supervisord.conf /etc/supervisord.conf
 
-COPY run.sh start-apache2.sh start-mysqld.sh create_mysql_admin_user.sh /
-COPY supervisord-apache2.conf supervisord-mysqld.conf /etc/supervisor.d/
-RUN chmod +x /run.sh /start-apache2.sh /start-mysqld.sh /create_mysql_admin_user.sh
+COPY run.sh start-httpd.sh start-mysqld.sh start-php5.sh create_mysql_admin_user.sh /
+COPY supervisord-httpd.conf supervisord-php5.conf supervisord-mysqld.conf /etc/supervisor.d/
+RUN chmod +x /run.sh /start-httpd.sh /start-php5.sh /start-mysqld.sh /create_mysql_admin_user.sh
 
 RUN yum clean all
 CMD ["/run.sh"]
