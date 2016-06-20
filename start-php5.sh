@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/sbin/php-fpm -c /etc/php-fpm.conf
+bash -c "sleep 1 && php-fpm -c /etc/php-fpm.conf"
