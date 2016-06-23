@@ -13,7 +13,7 @@ FROM index.alauda.cn/library/centos:6.6
 MAINTAINER Qingbo Song "qingbo.song@apicloud.com"
 
 # 依赖环境安装
-RUN rpm -Uvh http://mirrors.ustc.edu.cn/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm && yum install python-pip -y && easy_install supervisor
+RUN rpm -Uvh http://mirrors.ustc.edu.cn/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm && yum install python-pip -y && easy_install supervisor && mkdir /var/log/supervisor/
 
 #安装lamp环境
 RUN rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm && \
