@@ -31,4 +31,7 @@ COPY run.sh start-httpd.sh start-mysqld.sh start-php5.sh create_mysql_admin_user
 RUN chmod +x /run.sh /start-httpd.sh /start-php5.sh /start-mysqld.sh /create_mysql_admin_user.sh
 
 RUN yum clean all
+
+VOLUME [/var/lib/mysql]
+
 CMD ["/run.sh"]supervisor
