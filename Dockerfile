@@ -34,4 +34,6 @@ RUN yum clean all
 
 VOLUME [/var/lib/mysql]
 
+EXPOSE 80 3306
+
 CMD ["/run.sh"]supervisor
