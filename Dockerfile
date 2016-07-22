@@ -32,8 +32,8 @@ RUN chmod +x /run.sh /start-httpd.sh /start-php5.sh /start-mysqld.sh /create_mys
 
 RUN yum clean all
 
-VOLUME [/var/lib/mysql]
+VOLUME /var/lib/mysql
 
 EXPOSE 80 3306
 
-CMD ["/run.sh"]supervisor
+CMD ["/run.sh"]
