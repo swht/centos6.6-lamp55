@@ -23,6 +23,8 @@ RUN rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm && \
    yum -y install httpd && \
    yum -y install libmysqlclient mysql55w mysql55w-server && \
    yum -y install php55w php55w-fpm  php55w-gd  php55w-mysql 
+#安装crontab服务
+RUN yum -y install vixie-cron crontabs tar 
 
 # 配置supervisor
 COPY supervisord.conf /etc/supervisord.conf
